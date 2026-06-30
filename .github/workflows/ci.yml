@@ -52,13 +52,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "18"
-          cache: "npm"
-          cache-dependency-path: server/database/package-lock.json
 
       - name: Install Node dependencies
         run: |
           cd server/database
-          npm ci
+          npm install
 
       - name: Run Node tests
         run: |
@@ -81,13 +79,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "18"
-          cache: "npm"
-          cache-dependency-path: server/frontend/package-lock.json
 
       - name: Install frontend dependencies
         run: |
           cd server/frontend
-          npm ci
+          npm install
 
       - name: Build React app
         run: |
