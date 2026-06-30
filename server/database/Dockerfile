@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 
 # Install dependencies (copy lockfile first for layer caching)
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm install --only=production
 
 # Copy application source
 COPY app.js .
