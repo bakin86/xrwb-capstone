@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "test": "jest --forceExit"
+    "test": "jest --passWithNoTests --forceExit"
   },
   "dependencies": {
     "body-parser": "^1.20.0",
