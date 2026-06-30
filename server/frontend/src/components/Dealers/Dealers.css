@@ -1,0 +1,162 @@
+/* =====================================================
+   Dealers List Page Styles
+   ===================================================== */
+
+.dealers {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* ---- Hero banner ---- */
+.dealers__hero {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+}
+
+.dealers__hero h1 {
+  font-size: 2rem;
+  color: #1a1a2e;
+  margin-bottom: 0.5rem;
+}
+
+.dealers__hero p {
+  color: #555;
+  font-size: 1.05rem;
+}
+
+/* ---- Filters row ---- */
+.dealers__filters {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0 1rem;
+  flex-wrap: wrap;
+}
+
+.dealers__filter-label {
+  font-weight: 600;
+  color: #333;
+}
+
+.dealers__filter-select {
+  padding: 0.45rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.dealers__filter-select:focus {
+  outline: none;
+  border-color: #e94560;
+}
+
+.dealers__count {
+  color: #777;
+  font-size: 0.875rem;
+}
+
+/* ---- Table ---- */
+.dealers__table-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.dealers__table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.dealers__table thead {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+.dealers__table th,
+.dealers__table td {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.dealers__table th {
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+.dealers__table tbody tr {
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.15s;
+}
+
+.dealers__table tbody tr:hover {
+  background: #fafafa;
+}
+
+.dealers__name {
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+/* ---- Review button ---- */
+.dealers__review-btn {
+  padding: 0.4rem 0.9rem;
+  background: #e94560;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.dealers__review-btn:hover {
+  background: #c73652;
+}
+
+/* ---- Empty / Error / Loading states ---- */
+.dealers__empty {
+  text-align: center;
+  color: #888;
+  margin-top: 3rem;
+  font-size: 1.1rem;
+}
+
+.dealers__loading,
+.dealers__error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 1rem;
+  color: #555;
+  font-size: 1.1rem;
+}
+
+.dealers__error {
+  color: #c0392b;
+}
+
+/* Simple CSS spinner */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e0e0e0;
+  border-top-color: #e94560;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,3 @@
+curl -s http://localhost:8000/djangoapp/get_dealer/1/
+
+{"status": 200, "dealer": {"id": 1, "full_name": "Kansas Best Cars", "city": "Wichita", "address": "123 Main St", "zip": "67201", "state": "Kansas", "st": "KS", "lat": 37.69, "long": -97.33}}

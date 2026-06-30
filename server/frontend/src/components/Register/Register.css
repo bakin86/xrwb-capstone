@@ -1,0 +1,129 @@
+/* =====================================================
+   Register Page Styles
+   ===================================================== */
+
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - 64px);
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+  padding: 2.5rem 1rem;
+}
+
+.register__card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+  padding: 2.5rem 2.25rem;
+  width: 100%;
+  max-width: 460px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.register__icon {
+  font-size: 3rem;
+  margin-bottom: 0.25rem;
+}
+
+.register__title {
+  font-size: 1.8rem;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+.register__subtitle {
+  color: #888;
+  font-size: 0.9rem;
+  margin: 0 0 1rem;
+}
+
+/* ---- Error banner ---- */
+.register__error {
+  width: 100%;
+  background: #fdecea;
+  color: #c0392b;
+  padding: 0.7rem 1rem;
+  border-radius: 5px;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+/* ---- Form ---- */
+.register__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-group label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input {
+  padding: 0.6rem 0.85rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #e94560;
+  box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.12);
+}
+
+/* ---- Submit button ---- */
+.register__submit {
+  padding: 0.7rem;
+  background: #e94560;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.5rem;
+}
+
+.register__submit:hover:not(:disabled) {
+  background: #c73652;
+}
+
+.register__submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* ---- Login link ---- */
+.register__login-link {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.register__login-link a {
+  color: #e94560;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.register__login-link a:hover {
+  text-decoration: underline;
+}

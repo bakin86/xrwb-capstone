@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us – Best Cars Dealership</title>
+  <style>
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary:   #1a3c5e;
+      --accent:    #e8a020;
+      --light-bg:  #f5f7fa;
+      --card-bg:   #ffffff;
+      --text:      #2d3748;
+      --muted:     #718096;
+      --radius:    10px;
+      --shadow:    0 4px 18px rgba(0,0,0,0.09);
+      --transition: 0.25s ease;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      background: var(--light-bg);
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── Navbar ─── */
+    nav {
+      background: var(--primary);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 0;
+    }
+    .nav-brand .logo-icon {
+      font-size: 2rem;
+    }
+    .nav-brand span {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+    .nav-brand span em {
+      color: var(--accent);
+      font-style: normal;
+    }
+    .nav-links {
+      display: flex;
+      gap: 0.25rem;
+      list-style: none;
+    }
+    .nav-links li a {
+      color: rgba(255,255,255,0.82);
+      padding: 0.55rem 1.1rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: background var(--transition), color var(--transition);
+    }
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+    .nav-links li a.active {
+      background: var(--accent);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* ─── Hero ─── */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #2c5f8a 60%, #1a3c5e 100%);
+      color: #fff;
+      text-align: center;
+      padding: 5rem 1rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(232,160,32,0.2);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 50px;
+      padding: 0.3rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p {
+      max-width: 640px;
+      margin: 0 auto 2rem;
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.85);
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+    }
+    .hero-stats .stat { text-align: center; }
+    .hero-stats .stat-num {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--accent);
+      display: block;
+      line-height: 1;
+    }
+    .hero-stats .stat-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.75);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ─── Sections ─── */
+    section { padding: 4.5rem 1rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-header h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+    .section-header p { color: var(--muted); max-width: 540px; margin: 0 auto; }
+    .divider {
+      width: 60px; height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin: 0.75rem auto 0;
+    }
+
+    /* ─── About description ─── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-text p { margin-bottom: 1rem; color: var(--muted); }
+    .about-image-placeholder {
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border-radius: var(--radius);
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+    }
+
+    /* ─── Values ─── */
+    .values-bg { background: var(--primary); color: #fff; }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    .value-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: background var(--transition);
+    }
+    .value-card:hover { background: rgba(255,255,255,0.13); }
+    .value-card .icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .value-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .value-card p { font-size: 0.9rem; color: rgba(255,255,255,0.75); }
+    .values-bg .section-header h2 { color: #fff; }
+    .values-bg .section-header p { color: rgba(255,255,255,0.75); }
+
+    /* ─── Team ─── */
+    .team-section { background: var(--light-bg); }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1.75rem;
+    }
+    .team-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .team-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.13);
+    }
+    .team-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--accent);
+      margin-bottom: 1rem;
+    }
+    .team-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 0.25rem; }
+    .team-card .role {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.75rem;
+    }
+    .team-card p { font-size: 0.88rem; color: var(--muted); margin-bottom: 0.75rem; }
+    .team-card .email {
+      font-size: 0.82rem;
+      color: var(--primary);
+      font-weight: 600;
+      word-break: break-all;
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      background: #111827;
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+    }
+    footer strong { color: var(--accent); }
+    footer .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 0.75rem;
+      flex-wrap: wrap;
+    }
+    footer .footer-links a { color: rgba(255,255,255,0.55); font-size: 0.85rem; }
+    footer .footer-links a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navbar ── -->
+  <nav>
+    <div class="nav-brand">
+      <span class="logo-icon">🚗</span>
+      <span>Best <em>Cars</em> Dealership</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/About.html" class="active">About</a></li>
+      <li><a href="/Contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <header class="hero">
+    <div class="hero-badge">🏆 Trusted Since 2005</div>
+    <h1>About <span>Best Cars</span><br>Dealership</h1>
+    <p>Your premier destination for quality pre-owned and new vehicles. We believe every driver deserves the perfect car at a fair price.</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">15,000+</span>
+        <span class="stat-label">Happy Customers</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">500+</span>
+        <span class="stat-label">Cars in Stock</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">7</span>
+        <span class="stat-label">Dealership Locations</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">19</span>
+        <span class="stat-label">Years of Excellence</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Our Story ── -->
+  <section style="background:#fff;">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <div class="section-header" style="text-align:left;">
+            <h2>Our Story</h2>
+            <div class="divider" style="margin:0.75rem 0 0;"></div>
+          </div>
+          <br>
+          <p>Founded in 2005 in Wichita, Kansas, <strong>Best Cars Dealership</strong> began as a small family-owned lot with a simple mission: connect people with cars they love at prices that make sense.</p>
+          <p>Over nearly two decades we've grown to seven locations across five states – but our core values haven't changed. Every salesperson, mechanic, and finance specialist on our team shares the same commitment to honesty, quality, and customer-first service.</p>
+          <p>Whether you're buying your first car, upgrading your family SUV, or adding a work pickup to your fleet, our experts guide you through every step — from browsing inventory to driving off the lot.</p>
+        </div>
+        <div class="about-image-placeholder">🚘</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Core Values ── -->
+  <section class="values-bg">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Core Values</h2>
+        <p>The principles that guide every interaction we have with our customers and community.</p>
+        <div class="divider"></div>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="icon">🤝</div>
+          <h3>Integrity</h3>
+          <p>Transparent pricing, honest assessments, no hidden fees — ever.</p>
+        </div>
+        <div class="value-card">
+          <div class="icon">⭐</div>
+          <h3>Quality</h3>
+          <p>Every vehicle passes our 150-point inspection before hitting the lot.</p>
+        </div>
+        <div class="value-card">
+          <div class="icon">💡</div>
+          <h3>Innovation</h3>
+          <p>Online browsing, digital financing, and home delivery options.</p>
+        </div>
+        <div class="value-card">
+          <div class="icon">❤️</div>
+          <h3>Community</h3>
+          <p>Local sponsorships, charity drives, and youth driving programs.</p>
+        </div>
+        <div class="value-card">
+          <div class="icon">🔒</div>
+          <h3>Trust</h3>
+          <p>Carfax reports, certified warranties, and no-pressure sales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Team ── -->
+  <section class="team-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Meet Our Team</h2>
+        <p>The dedicated professionals who make your car-buying experience exceptional.</p>
+        <div class="divider"></div>
+      </div>
+      <div class="team-grid">
+
+        <div class="team-card">
+          <img src="https://i.pravatar.cc/150?img=1" alt="Margaret Collins" />
+          <h3>Margaret Collins</h3>
+          <div class="role">CEO & Founder</div>
+          <p>20+ years in automotive retail. Visionary behind Best Cars' multi-state expansion and customer-first philosophy.</p>
+          <div class="email">m.collins@bestcars.com</div>
+        </div>
+
+        <div class="team-card">
+          <img src="https://i.pravatar.cc/150?img=2" alt="David Reyes" />
+          <h3>David Reyes</h3>
+          <div class="role">General Manager</div>
+          <p>Oversees day-to-day operations across all seven locations, ensuring consistent quality and team performance.</p>
+          <div class="email">d.reyes@bestcars.com</div>
+        </div>
+
+        <div class="team-card">
+          <img src="https://i.pravatar.cc/150?img=3" alt="Priya Nair" />
+          <h3>Priya Nair</h3>
+          <div class="role">Head of Finance</div>
+          <p>Specialises in flexible financing plans. Helped over 3,000 buyers secure competitive loan rates this year alone.</p>
+          <div class="email">p.nair@bestcars.com</div>
+        </div>
+
+        <div class="team-card">
+          <img src="https://i.pravatar.cc/150?img=4" alt="James Thornton" />
+          <h3>James Thornton</h3>
+          <div class="role">Senior Sales Advisor</div>
+          <p>Award-winning sales professional with a knack for matching customers with their perfect vehicle on the first visit.</p>
+          <div class="email">j.thornton@bestcars.com</div>
+        </div>
+
+        <div class="team-card">
+          <img src="https://i.pravatar.cc/150?img=5" alt="Sofia Andrade" />
+          <h3>Sofia Andrade</h3>
+          <div class="role">Customer Experience Lead</div>
+          <p>Champions after-sale support, loyalty programmes, and ensures every review reflects a 5-star experience.</p>
+          <div class="email">s.andrade@bestcars.com</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <p>&copy; 2024 <strong>Best Cars Dealership</strong>. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/About.html">About</a>
+      <a href="/Contact.html">Contact Us</a>
+      <a href="/djangoapp/get_dealers/">Dealers API</a>
+    </div>
+  </footer>
+
+</body>
+</html>

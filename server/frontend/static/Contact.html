@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us – Best Cars Dealership</title>
+  <style>
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary:   #1a3c5e;
+      --accent:    #e8a020;
+      --light-bg:  #f5f7fa;
+      --card-bg:   #ffffff;
+      --text:      #2d3748;
+      --muted:     #718096;
+      --danger:    #e53e3e;
+      --success:   #38a169;
+      --radius:    10px;
+      --shadow:    0 4px 18px rgba(0,0,0,0.09);
+      --transition: 0.25s ease;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      background: var(--light-bg);
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── Navbar ─── */
+    nav {
+      background: var(--primary);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    }
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 0;
+    }
+    .nav-brand .logo-icon { font-size: 2rem; }
+    .nav-brand span { font-size: 1.25rem; font-weight: 700; color: #fff; letter-spacing: 0.5px; }
+    .nav-brand span em { color: var(--accent); font-style: normal; }
+    .nav-links { display: flex; gap: 0.25rem; list-style: none; }
+    .nav-links li a {
+      color: rgba(255,255,255,0.82);
+      padding: 0.55rem 1.1rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: background var(--transition), color var(--transition);
+    }
+    .nav-links li a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+    .nav-links li a.active {
+      background: var(--accent);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* ─── Page Hero ─── */
+    .page-hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #2c5f8a 100%);
+      color: #fff;
+      text-align: center;
+      padding: 4rem 1rem 3.5rem;
+    }
+    .page-hero h1 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 800; margin-bottom: 0.75rem; }
+    .page-hero h1 span { color: var(--accent); }
+    .page-hero p { color: rgba(255,255,255,0.82); font-size: 1.1rem; }
+
+    /* ─── Main grid ─── */
+    .contact-section { padding: 4rem 1rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+
+    /* ─── Info panel ─── */
+    .info-panel {
+      background: var(--primary);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+    }
+    .info-panel h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .info-panel > p { color: rgba(255,255,255,0.75); font-size: 0.95rem; margin-bottom: 2rem; }
+    .info-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    .info-item .icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .info-item h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent); margin-bottom: 0.2rem; }
+    .info-item p { font-size: 0.95rem; color: rgba(255,255,255,0.85); }
+    .info-divider { border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 2rem 0; }
+    .social-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px; height: 42px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      font-size: 1.2rem;
+      transition: background var(--transition);
+    }
+    .social-links a:hover { background: var(--accent); }
+
+    /* ─── Contact form ─── */
+    .form-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2.5rem;
+    }
+    .form-card h2 { font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.4rem; }
+    .form-card .subtitle { color: var(--muted); font-size: 0.95rem; margin-bottom: 2rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    @media (max-width: 520px) { .form-row { grid-template-columns: 1fr; } }
+
+    .field-group { margin-bottom: 1.25rem; }
+    .field-group label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+    .field-group label .required { color: var(--danger); margin-left: 2px; }
+    .field-group input,
+    .field-group select,
+    .field-group textarea {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      color: var(--text);
+      background: #fff;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      font-family: inherit;
+      outline: none;
+    }
+    .field-group input:focus,
+    .field-group select:focus,
+    .field-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(26,60,94,0.1);
+    }
+    .field-group textarea { resize: vertical; min-height: 130px; }
+    .field-group input::placeholder,
+    .field-group textarea::placeholder { color: #a0aec0; }
+
+    .submit-btn {
+      width: 100%;
+      padding: 0.9rem;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+      margin-top: 0.5rem;
+    }
+    .submit-btn:hover { background: #122d48; transform: translateY(-1px); }
+    .submit-btn:active { transform: translateY(0); }
+
+    /* Success / error toast */
+    .toast {
+      display: none;
+      padding: 1rem 1.25rem;
+      border-radius: 8px;
+      margin-bottom: 1.25rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .toast.success { background: #f0fff4; border: 1.5px solid var(--success); color: var(--success); display: block; }
+    .toast.error   { background: #fff5f5; border: 1.5px solid var(--danger);  color: var(--danger);  display: block; }
+
+    /* ─── Map placeholder ─── */
+    .map-section { padding: 0 1rem 4rem; }
+    .map-placeholder {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border-radius: var(--radius);
+      height: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      color: var(--primary);
+      box-shadow: var(--shadow);
+    }
+    .map-placeholder .map-icon { font-size: 4rem; }
+    .map-placeholder h3 { font-size: 1.2rem; font-weight: 700; }
+    .map-placeholder p { font-size: 0.9rem; color: var(--muted); }
+
+    /* ─── Footer ─── */
+    footer {
+      background: #111827;
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+    }
+    footer strong { color: var(--accent); }
+    footer .footer-links { display: flex; justify-content: center; gap: 2rem; margin-top: 0.75rem; flex-wrap: wrap; }
+    footer .footer-links a { color: rgba(255,255,255,0.55); font-size: 0.85rem; }
+    footer .footer-links a:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navbar ── -->
+  <nav>
+    <div class="nav-brand">
+      <span class="logo-icon">🚗</span>
+      <span>Best <em>Cars</em> Dealership</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/About.html">About</a></li>
+      <li><a href="/Contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <header class="page-hero">
+    <h1>Contact <span>Us</span></h1>
+    <p>We'd love to hear from you. Reach out and our team will respond within 24 hours.</p>
+  </header>
+
+  <!-- ── Contact Section ── -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Info Panel -->
+        <div class="info-panel">
+          <h2>Get In Touch</h2>
+          <p>Visit any of our seven locations or reach our central team through the details below.</p>
+
+          <div class="info-item">
+            <div class="icon">📍</div>
+            <div>
+              <h4>Headquarters</h4>
+              <p>123 Main Street, Wichita, KS 67201<br>United States</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="icon">📞</div>
+            <div>
+              <h4>Phone</h4>
+              <p>(316) 555-0101<br>Mon–Sat: 8 AM – 7 PM CT</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="icon">✉️</div>
+            <div>
+              <h4>Email</h4>
+              <p>info@bestcarsdealership.com<br>sales@bestcarsdealership.com</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="icon">🕐</div>
+            <div>
+              <h4>Business Hours</h4>
+              <p>Mon–Fri: 8 AM – 7 PM<br>Saturday: 9 AM – 5 PM<br>Sunday: Closed</p>
+            </div>
+          </div>
+
+          <hr class="info-divider" />
+
+          <h4 style="color:var(--accent); font-size:0.85rem; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:0.75rem;">Follow Us</h4>
+          <div class="social-links">
+            <a href="#" title="Facebook">📘</a>
+            <a href="#" title="Twitter / X">🐦</a>
+            <a href="#" title="Instagram">📸</a>
+            <a href="#" title="YouTube">▶️</a>
+            <a href="#" title="LinkedIn">💼</a>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="form-card">
+          <h2>Send Us a Message</h2>
+          <p class="subtitle">Fill in the form and we'll get back to you as soon as possible.</p>
+
+          <div id="form-toast" class="toast" role="alert"></div>
+
+          <form id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="field-group">
+                <label for="first-name">First Name <span class="required">*</span></label>
+                <input type="text" id="first-name" name="first_name" placeholder="Jane" required />
+              </div>
+              <div class="field-group">
+                <label for="last-name">Last Name <span class="required">*</span></label>
+                <input type="text" id="last-name" name="last_name" placeholder="Doe" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field-group">
+                <label for="email">Email Address <span class="required">*</span></label>
+                <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+              </div>
+              <div class="field-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" />
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="subject">Subject <span class="required">*</span></label>
+              <select id="subject" name="subject" required>
+                <option value="" disabled selected>Select a topic…</option>
+                <option value="sales">Vehicle Sales Inquiry</option>
+                <option value="service">Service &amp; Maintenance</option>
+                <option value="financing">Financing Options</option>
+                <option value="trade_in">Trade-In Valuation</option>
+                <option value="complaint">Complaint / Feedback</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="message">Message <span class="required">*</span></label>
+              <textarea id="message" name="message" placeholder="Write your message here…" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">📨 Send Message</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Map placeholder ── -->
+  <div class="map-section">
+    <div class="map-placeholder">
+      <div class="map-icon">🗺️</div>
+      <h3>Find a Dealership Near You</h3>
+      <p>We have 7 locations across Kansas, Texas, California, New York, and Illinois.</p>
+      <p style="font-size:0.82rem; color:#94a3b8;">(Interactive map powered by Google Maps — embed your API key here)</p>
+    </div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <p>&copy; 2024 <strong>Best Cars Dealership</strong>. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/About.html">About</a>
+      <a href="/Contact.html">Contact Us</a>
+      <a href="/djangoapp/get_dealers/">Dealers API</a>
+    </div>
+  </footer>
+
+  <script>
+    const form  = document.getElementById('contact-form');
+    const toast = document.getElementById('form-toast');
+
+    function showToast(message, type) {
+      toast.textContent = message;
+      toast.className = `toast ${type}`;
+      toast.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      setTimeout(() => { toast.className = 'toast'; }, 6000);
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const firstName = document.getElementById('first-name').value.trim();
+      const lastName  = document.getElementById('last-name').value.trim();
+      const email     = document.getElementById('email').value.trim();
+      const subject   = document.getElementById('subject').value;
+      const message   = document.getElementById('message').value.trim();
+
+      if (!firstName || !lastName || !email || !subject || !message) {
+        showToast('⚠️ Please fill in all required fields.', 'error');
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showToast('⚠️ Please enter a valid email address.', 'error');
+        return;
+      }
+
+      // Simulate successful submission
+      showToast('✅ Thank you! Your message has been sent. We\'ll be in touch within 24 hours.', 'success');
+      form.reset();
+    });
+  </script>
+</body>
+</html>
